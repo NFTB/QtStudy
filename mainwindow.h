@@ -19,5 +19,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void updateTextColor();
 };
 #endif // MAINWINDOW_H
