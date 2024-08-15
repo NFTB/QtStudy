@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>973</width>
+    <height>723</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,25 +36,25 @@
        <widget class="QGroupBox" name="groupBox">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>60</y>
-          <width>551</width>
-          <height>231</height>
+          <x>0</x>
+          <y>0</y>
+          <width>461</width>
+          <height>241</height>
          </rect>
         </property>
         <property name="title">
          <string>调色板</string>
         </property>
         <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="0">
-          <widget class="QLabel" name="redLabel">
+         <item row="3" column="0">
+          <widget class="QLabel" name="alphaLabel">
            <property name="text">
-            <string>Red</string>
+            <string>Alpha</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <widget class="QSlider" name="redSlider">
+         <item row="3" column="1">
+          <widget class="QSlider" name="alphaSlider">
            <property name="orientation">
             <enum>Qt::Orientation::Horizontal</enum>
            </property>
@@ -74,13 +74,10 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="2" rowspan="2">
-          <widget class="QTextEdit" name="colorTextEdit"/>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="blueLabel">
+         <item row="0" column="0">
+          <widget class="QLabel" name="redLabel">
            <property name="text">
-            <string>Blue</string>
+            <string>Red</string>
            </property>
           </widget>
          </item>
@@ -91,19 +88,149 @@
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="alphaLabel">
-           <property name="text">
-            <string>Alpha</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QSlider" name="alphaSlider">
+         <item row="0" column="1">
+          <widget class="QSlider" name="redSlider">
            <property name="orientation">
             <enum>Qt::Orientation::Horizontal</enum>
            </property>
           </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="blueLabel">
+           <property name="text">
+            <string>Blue</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2" rowspan="2">
+          <widget class="QTextEdit" name="colorTextEdit">
+           <property name="maximumSize">
+            <size>
+             <width>200</width>
+             <height>200</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>250</y>
+          <width>451</width>
+          <height>241</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>定时器</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLCDNumber" name="minLcdNumber">
+             <property name="layoutDirection">
+              <enum>Qt::LayoutDirection::LeftToRight</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLCDNumber" name="secLcdNumber">
+             <property name="layoutDirection">
+              <enum>Qt::LayoutDirection::LeftToRight</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLCDNumber" name="msecLcdNumber">
+             <property name="layoutDirection">
+              <enum>Qt::LayoutDirection::LeftToRight</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="3" column="0">
+          <widget class="QProgressBar" name="timeProgressBar">
+           <property name="value">
+            <number>24</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QPushButton" name="startButton">
+             <property name="font">
+              <font>
+               <stylestrategy>PreferDefault</stylestrategy>
+              </font>
+             </property>
+             <property name="contextMenuPolicy">
+              <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
+             </property>
+             <property name="text">
+              <string>开始</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="stopButton">
+             <property name="text">
+              <string>停止</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1,1,1">
+           <item>
+            <widget class="QLabel" name="timeCycleLabel">
+             <property name="text">
+              <string>定时周期：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="msecSpinBox"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="timeSetButton">
+             <property name="text">
+              <string>设置周期</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </item>
         </layout>
        </widget>
@@ -118,7 +245,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>973</width>
      <height>25</height>
     </rect>
    </property>
