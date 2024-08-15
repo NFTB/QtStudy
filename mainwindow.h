@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDateTime>
+#include <QTimer>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,7 +21,14 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
+    void paletteInit();
     void updateTextColor();
+    void timerInit();
+    void updateCld();
+private:
+    Ui::MainWindow *ui;
+    QTimer *my_timer;
+    QDateTime last_time;
+    bool time_status;
 };
 #endif // MAINWINDOW_H
