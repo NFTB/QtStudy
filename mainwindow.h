@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QDateTime>
 #include <QTimer>
+#include <QListWidgetItem>
 
 
 QT_BEGIN_NAMESPACE
@@ -19,6 +20,25 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void on_listIniButton_clicked();
+
+    void on_insertButton_clicked();
+
+    void on_clearButton_clicked();
+
+    void on_delButton_clicked();
+
+    void on_addButton_clicked();
+
+    void on_allSelectButton_clicked();
+
+    void on_revSelectButton_clicked();
+
+    void on_allNotSelectButton_clicked();
+
+    void on_editCheckBox_stateChanged(int arg1);
 
 private:
     void paletteInit();

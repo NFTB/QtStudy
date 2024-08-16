@@ -74,3 +74,117 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_listIniButton_clicked()
+{
+    QListWidgetItem *aItem;
+    bool chk=ui->editCheckBox->isChecked();
+    ui->listWidget->clear();
+    for(int i=0;i<10;++i){
+        QString str=QString::asprintf("Item %d",i);
+        aItem=new QListWidgetItem();
+        aItem->setText(str);
+        aItem->setCheckState(Qt::Checked);
+        if(chk){
+            aItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable
+                           |Qt::ItemIsEnabled|Qt::ItemIsEditable);
+        }else{
+            aItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable
+                            |Qt::ItemIsEnabled);
+        }
+        ui->listWidget->addItem(aItem);
+    }
+}
+
+
+void MainWindow::on_insertButton_clicked()
+{
+    bool chk=ui->editCheckBox->isChecked();
+    QListWidgetItem *aItem=new QListWidgetItem("New inserted Item");
+    aItem->setCheckState(Qt::Checked);
+    if(chk){
+        aItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable
+                        |Qt::ItemIsEnabled|Qt::ItemIsEditable);
+    }else{
+        aItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable
+                        |Qt::ItemIsEnabled);
+    }
+    ui->listWidget->insertItem(ui->listWidget->currentRow(),aItem);
+}
+
+
+void MainWindow::on_clearButton_clicked()
+{
+    ui->listWidget->clear();
+}
+
+
+void MainWindow::on_delButton_clicked()
+{
+    int row=ui->listWidget->currentRow();
+    QListWidgetItem* aItem=ui->listWidget->takeItem(row);
+    delete aItem;
+}
+
+
+void MainWindow::on_addButton_clicked()
+{
+    bool chk=ui->editCheckBox->isChecked();
+    QListWidgetItem *aItem=new QListWidgetItem("New inserted Item");
+    aItem->setCheckState(Qt::Checked);
+    if(chk){
+        aItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable
+                        |Qt::ItemIsEnabled|Qt::ItemIsEditable);
+    }else{
+        aItem->setFlags(Qt::ItemIsSelectable|Qt::ItemIsUserCheckable
+                        |Qt::ItemIsEnabled);
+    }
+    ui->listWidget->addItem(aItem);
+}
+
+
+void MainWindow::on_allSelectButton_clicked()
+{
+    int cnt=ui->listWidget->count();
+    for(int i=0;i<cnt;++i){
+        QListWidgetItem *aItem=ui->listWidget->item(i);
+        aItem->setCheckState(Qt::Checked);
+    }
+}
+
+void MainWindow::on_allNotSelectButton_clicked()
+{
+    int cnt=ui->listWidget->count();
+    for(int i=0;i<cnt;++i){
+        QListWidgetItem *aItem=ui->listWidget->item(i);
+        aItem->setCheckState(Qt::Unchecked);
+    }
+}
+
+void MainWindow::on_revSelectButton_clicked()
+{
+    int cnt=ui->listWidget->count();
+    for(int i=0;i<cnt;++i){
+        QListWidgetItem *aItem=ui->listWidget->item(i);
+        if(aItem->checkState()==Qt::Checked){
+            aItem->setCheckState(Qt::Unchecked);
+        }else{
+            aItem->setCheckState(Qt::Checked);
+        }
+    }
+}
+
+
+void MainWindow::on_editCheckBox_stateChanged(int arg1)
+{
+    int cnt=ui->listWidget->count();
+    for(int i=0;i<cnt;++i){
+        QListWidgetItem *aItem=ui->listWidget->item(i);
+        if(arg1==Qt::Checked){
+            aItem->setFlags(aItem->flags()|Qt::ItemIsEditable);
+        }else{
+            aItem->setFlags(aItem->flags()^Qt::ItemIsEditable);
+        }
+    }
+}
+
