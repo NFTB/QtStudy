@@ -5,6 +5,7 @@
 #include <QDateTime>
 #include <QTimer>
 #include <QListWidgetItem>
+#include <QPainter>
 
 
 QT_BEGIN_NAMESPACE
@@ -45,6 +46,7 @@ private:
     void updateTextColor();
     void timerInit();
     void updateCld();
+    void paintEvent(QPaintEvent *);
 private:
     Ui::MainWindow *ui;
     QTimer *my_timer;

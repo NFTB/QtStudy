@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setPalette(QPalette(Qt::white));
     paletteInit();
     timerInit();
 }
@@ -188,3 +189,25 @@ void MainWindow::on_editCheckBox_stateChanged(int arg1)
     }
 }
 
+void MainWindow::paintEvent(QPaintEvent *)
+{
+    QPainter painter(this);
+    int W=width();
+    int pos=ui->groupBox_2->y()+ui->groupBox_2->height();
+    int H=height()-pos;
+    int side=qMin(W,H);
+    QRect rect(0,pos+(H-side)/2,side,side);
+    painter.drawRect(rect);
+    painter.setViewport(rect);
+    painter.setWindow(-100,-100,200,200);
+    painter.setRenderHint(QPainter::Antialiasing);
+    QPen pen;
+    pen.setWidth(1);
+    pen.setColor(Qt::red);
+    pen.setStyle(Qt::SolidLine);
+    painter.setPen(pen);
+    for(int i=0;i<36;++i){
+        painter.drawEllipse(QPoint(50,0),50,50);
+        painter.rotate(10);
+    }
+}
